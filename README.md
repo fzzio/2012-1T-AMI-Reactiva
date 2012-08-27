@@ -1,9 +1,8 @@
 Reactiva: Rehabilitacion Interactiva
 ====================================
 
-2012-1T-AMI-Reactiva.<br />
-Proyecto de la materia Aplicaciones Multimedia Interactivas (2012-1T). <br />
-Este proyecto se realiza usando las siguientes tecnologias:<br />
+Proyecto para la materia Aplicaciones Multimedia Interactivas (2012-1T). Se trata de una aplicacion multimedia dirigida a el area de rehabilitacion y terapia fisica.
+<br />Este proyecto se realiza usando las siguientes tecnologias
 <ol>
   <li>openFrameworks (www.openframeworks.cc)</li>
   <li>LinuxMint (32 Bits) y openSuSe 12.1 (64 bits)</li>
