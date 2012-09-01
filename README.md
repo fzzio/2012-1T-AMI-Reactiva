@@ -1,8 +1,8 @@
-Reactiva: Rehabilitacion Interactiva
+Reactiva: Rehabilitaci&oacute;n Interactiva
 ====================================
 
-Proyecto para la materia Aplicaciones Multimedia Interactivas (2012-1T). Se trata de una aplicacion multimedia dirigida a el area de rehabilitacion y terapia fisica.
-<br />Este proyecto se realiza usando las siguientes tecnologias
+Proyecto para la materia Aplicaciones Multimedia Interactivas (2012-1T). Se trata de una aplicaci&oacute;n multimedia dirigida al &aacute;rea de rehabilitaci&oacute;n y terapia f&iacute;sica.
+<br />Este proyecto se realiza usando las siguientes tecnolog&iacute;as
 <ol>
   <li>openFrameworks (www.openframeworks.cc)</li>
   <li>LinuxMint (32 Bits) y openSuSe 12.1 (64 bits)</li>
@@ -12,7 +12,7 @@ Proyecto para la materia Aplicaciones Multimedia Interactivas (2012-1T). Se trat
 ## Addons necesarios para la compilacion ##
 * ofxOpenCv ( nativo )
 * ofxXmlSettings (nativo)
-* [ofxKinect](https://github.com/ofTheo/ofxKinect) (Lea y siga los pasos de instalacion en el Repositorio de Theo)
+* [ofxKinect](https://github.com/ofTheo/ofxKinect) (Siga los pasos de instalaci&oacute;n en el mismo repositorio)
 
 
 ## Contacto ##
