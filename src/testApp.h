@@ -36,12 +36,14 @@ class testApp : public ofBaseApp{
         ofxLabel                lblAngulo;
 
         // datos
-        float                   distanciaTotal;
+        float                   posicionInicialZ;
+        float                   posActualZ;
+        float                   distancia;
 
         // Variables para usar kinect
         ofxKinect               kinect;
         int                     kinectAngulo;
-
+        bool                    bCapturarPosInicialZ;
         // Imagenes de OpenCV
         ofxCvColorImage imgColor;
         ofxCvGrayscaleImage imgGris;

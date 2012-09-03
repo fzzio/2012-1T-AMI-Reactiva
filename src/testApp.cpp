@@ -11,12 +11,15 @@ void testApp::setup(){
 
     /// Paneles
     panel.setup("Configuracion:", "configuraciones/configuraciones.xml", 10, 10);
-    panel.add(umbralCerca.setup("Umbral A", 230, 0, 2000));
-    panel.add(umbralLejos.setup("Umbral B", 720, 0, 2000));
+    panel.add(umbralCerca.setup("Umbral Cerca", 230, 0, 250));
+    panel.add(umbralLejos.setup("Umbral Lejos", 720, 0, 750));
     panel.add(lblAngulo.setup("lblangulo", ""));
 
     fuenteVagRounded.loadFont("fuentes/vag.ttf", 16);
-    distanciaTotal = 0;
+    posicionInicialZ = 0;
+    posActualZ = 0;
+    distancia = 0;
+
     /// Acciones con el Kinect
 	kinect.setRegistration(true); // enable depth->video image calibration
 
@@ -28,6 +31,7 @@ void testApp::setup(){
 
 	kinectAngulo = 0;
 	kinect.setCameraTiltAngle(kinectAngulo);
+	bCapturarPosInicialZ = false;
 
 
     /// Imagenes
@@ -53,26 +57,33 @@ void testApp::update(){
         unsigned char * pix = imgGris.getPixels();
         int numPixels = imgGris.getWidth() * imgGris.getHeight();
         float* distanciaKinect = kinect.getDistancePixels(); // distancia en centimetros
-        float distanciaCercana = 10000000000000000000.0f;
+        float posCercanaZ = 10000000000000000000.0f;
         for(int i = 0; i < numPixels; i++) {
             if(pix[i] < umbralCerca && pix[i] > umbralLejos) {
                 pix[i] = 255;
 
                 // verificamos cual es el mas proximo
-                if(distanciaKinect[i] < distanciaCercana){
-                    distanciaCercana = distanciaKinect[i];
+                if(distanciaKinect[i] < posCercanaZ){
+                    posCercanaZ = distanciaKinect[i];
                 }
             } else {
                 pix[i] = 0;
             }
         }
 
+        posActualZ = posCercanaZ;
+
         // update the cv images
 		imgGris.flagImageChanged();
 
-        if(distanciaCercana >=0){
-            distanciaTotal = distanciaCercana/100;
-        }
+		if(bCapturarPosInicialZ){
+
+            posicionInicialZ = posActualZ;
+            bCapturarPosInicialZ = false;
+		}
+
+        distancia = posActualZ - posicionInicialZ;
+
 
 	}
 
@@ -114,6 +125,10 @@ void testApp::keyPressed(int key){
 			if(kinectAngulo<-30) kinectAngulo=-30;
 			kinect.setCameraTiltAngle(kinectAngulo);
 			break;
+
+        case ' ':
+            bCapturarPosInicialZ = true;
+            break;
 	}
 }
 
@@ -178,8 +193,11 @@ void testApp::dibujarPantallaConfiguracion(){
     imgGris.draw(350, 10, 320, 240);
 
     char mensaje[255];
-    sprintf(mensaje, "Distancia detectada %f cm.", distanciaTotal);
-    fuenteVagRounded.drawString(mensaje, 800, 400);
+    sprintf(mensaje, "Posicion actual en Z: %0.2f", posActualZ);
+    fuenteVagRounded.drawString(mensaje, 700, 30);
+    sprintf(mensaje, "Distancia recorrida: %0.2f", distancia);
+    fuenteVagRounded.drawString(mensaje, 700, 80);
+
 
 }
 
