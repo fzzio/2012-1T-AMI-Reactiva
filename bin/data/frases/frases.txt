@@ -1,0 +1,5 @@
+0|20|Empezando Animo!|
+20|40|Adelante..!|
+40|60|Animo tu puedes|
+60|80|Ya llegas|
+80|100|Ya terminamos|

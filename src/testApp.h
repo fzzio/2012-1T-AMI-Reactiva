@@ -34,11 +34,16 @@ class testApp : public ofBaseApp{
         ofxIntSlider            umbralLejos, umbralCerca;
         ofxToggle               cercaBlanco, umbral;
         ofxLabel                lblAngulo;
+        ofxButton               btnCapturar;
+
+        void                    aprenderUmbralesPresionado(bool & presionado);
 
         // datos
         float                   posicionInicialZ;
+        int                     posMinZ, posMaxZ;
         float                   posActualZ;
         float                   distancia;
+        int                     distanciaPorcent;
 
         // Variables para usar kinect
         ofxKinect               kinect;
@@ -60,5 +65,24 @@ class testApp : public ofBaseApp{
 		void                    dibujarPantallaAplicacion();
 
 
+        void dibujarPiso(int posX,int posY, int ancho, int alto, int porcentaje);
+        void CargarFrases();
+        void escogerFrase(int porcentaje);
+        void dibujarAmbiente(int posX,int posY, int ancho, int alto, int porcentaje);
+
+        int dist;
+        string fraSelec;
+
+
+        typedef struct{
+                int     porcIni;
+                int     porcFin;
+                string  frase;
+        }sFrases;
+
+
+        sFrases     vFrases[5];
+        ofImage     fondoApp;
+        ofImage     imgRegla;
 
 };
